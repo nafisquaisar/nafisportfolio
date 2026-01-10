@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 import { styles } from "../styles";
 import { services } from "../constants";
+import computer from "../assets/computer.png";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 import { ComputersCanvas } from "./canvas";
@@ -54,9 +55,47 @@ const About = () => {
         </div>
 
         {/* RIGHT → COMPUTER */}
-        <div className="w-full lg:flex-1 h-[280px] sm:h-[340px] lg:h-[420px]">
+        {/* <div className="w-full lg:flex-1 h-[280px] sm:h-[340px] lg:h-[420px]">
           <ComputersCanvas />
-        </div>
+        </div> */}
+
+
+          {/* RIGHT → IMAGE */}
+<div className="perspective-[1000px]">
+
+
+
+<motion.img
+  src={computer}
+  className="max-w-[420px] w-full object-contain"
+  initial={{ opacity: 0, y: 40, rotateX: -10 }}
+  animate={{
+    opacity: 1,
+    y: [0, -8, 0],
+    rotateX: [0, 3, 0],
+  }}
+  transition={{
+    opacity: { duration: 0.8 },
+    duration: 6,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  whileHover={{
+    rotateX: 10,
+    rotateY: -12,
+    scale: 1.05,
+  }}
+/>
+
+
+
+
+</div>
+
+
+
+
+
       </div>
 
       {/* ================= LOWER PART ================= */}

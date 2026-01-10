@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { styles } from "../styles";
+import { motion } from "framer-motion";
+
 import {
   FaGithub,
   FaLinkedinIn,
@@ -153,19 +155,56 @@ const Hero = () => {
           </div>
 
           {/* RIGHT IMAGE */}
-          <div className="flex justify-center md:justify-end">
-            <div className="relative w-[300px] h-[380px]">
-              <div className="absolute inset-0 bg-cyan-500/20 blur-3xl rounded-full" />
-              <div className="relative w-full h-full overflow-hidden rounded-[50%]">
-                <img
-                  src="/profile.png"
-                  alt="Nafis Quaisar"
-                  className="w-full h-full object-cover scale-110"
-                />
-                <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#020617] to-transparent" />
-              </div>
-            </div>
-          </div>
+
+
+<div className="flex justify-center md:justify-end">
+  <div className="relative w-[300px] h-[380px]">
+
+    {/* animated glow ring */}
+    <motion.div
+      className="absolute -inset-2 rounded-full bg-gradient-to-tr from-cyan-400 via-sky-500 to-purple-500 blur-xl opacity-60"
+      animate={{
+        rotate: [0, 360],
+        opacity: [0.4, 0.7, 0.4],
+      }}
+      transition={{
+        duration: 10,
+        repeat: Infinity,
+        ease: "linear",
+      }}
+    />
+
+    {/* image container */}
+    <motion.div
+      className="relative w-full h-full rounded-[50%] overflow-hidden"
+      animate={{
+        y: [0, -10, 0],
+      }}
+      transition={{
+        duration: 5,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+      whileHover={{
+        scale: 1.05,
+      }}
+    >
+      <img
+        src="/profile.png"
+        alt="Nafis Quaisar"
+        className="w-full h-full object-cover scale-110"
+      />
+
+      {/* bottom fade */}
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#020617] to-transparent" />
+    </motion.div>
+
+  </div>
+</div>
+
+
+
+
 
         </div>
       </div>
