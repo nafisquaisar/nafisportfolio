@@ -3,16 +3,18 @@
   <head>
     <meta charset="UTF-8" />
 
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
 
+    <!-- Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ✅ BASIC SEO -->
-    <title>Nafis Quaisar | Android Developer | Flutter | UI/UX</title>
+    <!-- ===== BASIC SEO ===== -->
+    <title>Nafis Quaisar – Android Developer | Kotlin | Flutter | Portfolio</title>
 
     <meta
       name="description"
-      content="Nafis Quaisar is an Android Developer skilled in Kotlin, MVVM, Firebase, Flutter, and modern mobile app development."
+      content="Official portfolio of Nafis Quaisar, an Android Developer specializing in Kotlin, MVVM, Firebase, Flutter, and modern mobile app development."
     />
 
     <meta
@@ -21,27 +23,67 @@
     />
 
     <meta name="author" content="Nafis Quaisar" />
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="Content-Language" content="en" />
 
-    <link rel="canonical" href="https://nafisquaisar.netlify.app/" />
+    <!-- ===== CANONICAL (VERY IMPORTANT) ===== -->
+    <link rel="canonical" href="https://nafisquaisar.online/" />
 
-    <!-- ✅ OPEN GRAPH (Google + Social) -->
-    <meta property="og:title" content="Nafis Quaisar | Android Developer" />
+    <!-- ===== OPEN GRAPH (Google + Social) ===== -->
+    <meta property="og:title" content="Nafis Quaisar – Android Developer" />
     <meta
       property="og:description"
       content="Portfolio of Nafis Quaisar, Android & Flutter Developer."
     />
-    <meta property="og:url" content="https://nafisquaisar.netlify.app/" />
+    <meta property="og:url" content="https://nafisquaisar.online/" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://nafisquaisar.netlify.app/profile.png" />
+    <meta
+      property="og:image"
+      content="https://nafisquaisar.online/profile.png"
+    />
 
-    <!-- ✅ GOOGLE SEARCH CONSOLE (add after verification) -->
-    <!--
-    <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE" />
-    -->
+    <!-- ===== TWITTER / X CARD ===== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nafis Quaisar – Android Developer" />
+    <meta
+      name="twitter:description"
+      content="Portfolio of Nafis Quaisar, Android & Flutter Developer."
+    />
+    <meta
+      name="twitter:image"
+      content="https://nafisquaisar.online/profile.png"
+    />
+
+    <!-- ===== PERSON STRUCTURED DATA ===== -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Nafis Quaisar",
+        "url": "https://nafisquaisar.online/",
+        "image": "https://nafisquaisar.online/profile.png",
+        "jobTitle": "Android Developer",
+        "sameAs": [
+          "https://github.com/nafisquaisar",
+          "https://www.linkedin.com/in/nafis-quaisar-b35a4725a",
+          "https://www.instagram.com/nafisquaisar/",
+          "https://www.facebook.com/9801999829a",
+          "https://x.com/NafisKamran"
+        ]
+      }
+    </script>
   </head>
 
   <body>
+    <!-- IMPORTANT: Visible name for SEO -->
+    <noscript>
+      <h1>Nafis Quaisar</h1>
+      <h2>Android Developer | Kotlin | Flutter</h2>
+    </noscript>
+
     <div id="root"></div>
+
+    <!-- React Entry -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -45,7 +45,10 @@ const Hero = () => {
   }, [text, isDeleting, roleIndex]);
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-gradient-to-br from-[#050816] via-[#0a0f2c] to-[#020617]">
+<section
+  id="home"
+  className="relative w-full min-h-screen overflow-hidden bg-gradient-to-br from-[#050816] via-[#0a0f2c] to-[#020617]"
+>
       {/* glow blobs */}
       <div className="absolute top-24 left-24 w-72 h-72 bg-cyan-500/20 blur-3xl rounded-full" />
       <div className="absolute bottom-24 right-24 w-80 h-80 bg-purple-500/20 blur-3xl rounded-full" />
@@ -85,7 +88,7 @@ const Hero = () => {
             {/* buttons */}
             <div className="mt-8 flex gap-4">
               <a
-                href="#projects"
+                href="#work"
                 className="px-6 py-3 rounded-xl bg-[#38bdf8] text-[#020617] font-semibold hover:bg-[#0ea5e9] transition"
               >
                 View Projects
