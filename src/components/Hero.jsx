@@ -193,7 +193,7 @@ const Hero = () => {
       }}
     >
       <img
-        src="/profile.png"
+        src="/profile1.png"
         alt="Nafis Quaisar"
         className="w-full h-full object-cover scale-110"
       />
