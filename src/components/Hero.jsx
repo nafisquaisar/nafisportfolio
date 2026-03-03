@@ -113,7 +113,7 @@ const Hero = () => {
   </a>
 
   <a
-    href="https://www.linkedin.com/in/nafis-quaisar-b35a4725a"
+    href="https://www.linkedin.com/in/nafisquaisar"
     target="_blank"
     rel="noreferrer"
   >
@@ -129,7 +129,7 @@ const Hero = () => {
   </a>
 
   <a
-    href="https://www.facebook.com/9801999829a"
+    href="https://www.facebook.com/nafisquaisarofficial"
     target="_blank"
     rel="noreferrer"
   >
@@ -193,7 +193,7 @@ const Hero = () => {
       }}
     >
       <img
-        src="/profile1.png"
+        src="/nafis-quaisar.png"
         alt="Nafis Quaisar"
         className="w-full h-full object-cover scale-110"
       />

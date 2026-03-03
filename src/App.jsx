@@ -6,6 +6,7 @@ import {
   Navbar,
   Tech,
   Works,
+  Experience,
   StarsCanvas
 } from "./components";
 
@@ -21,6 +22,7 @@ const App = () => {
           <About />
           <Tech />
           <Works />
+          <Experience />
         </div>
 
         {/* ===== CONTACT (SEPARATE, NOT INTERRUPTED) ===== */}
