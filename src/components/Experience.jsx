@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGooglePlay } from "react-icons/fa";
+import { FaGooglePlay, FaDownload } from "react-icons/fa";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import analyzePng   from "../assets/experience/analyze.png";
@@ -292,30 +292,56 @@ const Experience = () => {
                   {PROJECT.title}
                 </h3>
 
-                {/* Play Store button */}
-                <button
-                  onClick={() => setShowPlayPopup(true)}
-                  title="View on Play Store"
-                  style={{
-                    flexShrink: 0,
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "7px",
-                    background: "linear-gradient(135deg, #01875f, #00c853)",
-                    border: "none",
-                    borderRadius: "10px",
-                    padding: "8px 13px",
-                    cursor: "pointer",
-                    boxShadow: "0 4px 16px rgba(1,135,95,0.4)",
-                    transition: "transform 0.15s, box-shadow 0.15s",
-                    marginTop: "2px",
-                  }}
-                  onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.06)"; e.currentTarget.style.boxShadow = "0 6px 22px rgba(1,135,95,0.6)"; }}
-                  onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "0 4px 16px rgba(1,135,95,0.4)"; }}
-                >
-                  <FaGooglePlay style={{ color: "#fff", fontSize: "15px" }} />
-                  <span style={{ color: "#fff", fontSize: "12px", fontWeight: "700", letterSpacing: "0.3px" }}>Play Store</span>
-                </button>
+                {/* action buttons */}
+                <div style={{ display: "flex", gap: "8px", flexShrink: 0, marginTop: "2px", flexWrap: "wrap" }}>
+                  {/* Play Store button */}
+                  <button
+                    onClick={() => setShowPlayPopup(true)}
+                    title="View on Play Store"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "7px",
+                      background: "linear-gradient(135deg, #01875f, #00c853)",
+                      border: "none",
+                      borderRadius: "10px",
+                      padding: "8px 13px",
+                      cursor: "pointer",
+                      boxShadow: "0 4px 16px rgba(1,135,95,0.4)",
+                      transition: "transform 0.15s, box-shadow 0.15s",
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.06)"; e.currentTarget.style.boxShadow = "0 6px 22px rgba(1,135,95,0.6)"; }}
+                    onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "0 4px 16px rgba(1,135,95,0.4)"; }}
+                  >
+                    <FaGooglePlay style={{ color: "#fff", fontSize: "15px" }} />
+                    <span style={{ color: "#fff", fontSize: "12px", fontWeight: "700", letterSpacing: "0.3px" }}>Play Store</span>
+                  </button>
+
+                  {/* Download APK button */}
+                  <a
+                    href="/app/popular-bread.apk"
+                    download="PopularBread.apk"
+                    title="Download APK"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "7px",
+                      background: "linear-gradient(135deg, #7c3aed, #a855f7)",
+                      border: "none",
+                      borderRadius: "10px",
+                      padding: "8px 13px",
+                      cursor: "pointer",
+                      boxShadow: "0 4px 16px rgba(124,58,237,0.4)",
+                      transition: "transform 0.15s, box-shadow 0.15s",
+                      textDecoration: "none",
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.06)"; e.currentTarget.style.boxShadow = "0 6px 22px rgba(124,58,237,0.6)"; }}
+                    onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "0 4px 16px rgba(124,58,237,0.4)"; }}
+                  >
+                    <FaDownload style={{ color: "#fff", fontSize: "14px" }} />
+                    <span style={{ color: "#fff", fontSize: "12px", fontWeight: "700", letterSpacing: "0.3px" }}>Download</span>
+                  </a>
+                </div>
               </div>
 
               {/* role */}
