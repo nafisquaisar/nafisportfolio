@@ -28,7 +28,7 @@ import flutter from "./tech/flutter.jpg";
 import android from "./tech/android.jpg";
 import razorpay from "./tech/razorpay.jpg";
 import room from "./tech/room.jpg";
-import sql from "./tech/sql.png";
+import sql from "./tech/SQL.png";
 import sqlite from "./tech/sqlite.jpg";
 import firebase from "./tech/firebase.png";
 import exoplayer from "./tech/exoplayer.png";
