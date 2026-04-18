@@ -406,7 +406,7 @@ const Experience = () => {
                   </a>
 
                   {/* Download APK button */}
-                  <a
+                  {/* <a
                     href="/app/popular-bread.apk"
                     download="PopularBread.apk"
                     title="Download APK"
@@ -434,8 +434,8 @@ const Experience = () => {
                         "0 4px 16px rgba(124,58,237,0.4)";
                     }}
                   >
-                    <FaDownload style={{ color: "#fff", fontSize: "14px" }} />
-                    <span
+                    <FaDownload style={{ color: "#fff", fontSize: "14px" }} /> */}
+                    {/* <span
                       style={{
                         color: "#fff",
                         fontSize: "12px",
@@ -444,8 +444,8 @@ const Experience = () => {
                       }}
                     >
                       Download
-                    </span>
-                  </a>
+                    </span> */}
+                  {/* </a> */}
                 </div>
               </div>
 

@@ -193,9 +193,9 @@ const Hero = () => {
       }}
     >
       <img
-        src="/nafis-quaisar1.png"
+        src="/nafis-quaisar1.jpeg"
         alt="Nafis Quaisar"
-        className="w-full h-full object-cover scale-110"
+        className="w-full h-full object-cover scale-100"
       />
 
       {/* bottom fade */}
