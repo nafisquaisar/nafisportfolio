@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaGooglePlay, FaDownload } from "react-icons/fa";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
-import analyzePng   from "../assets/experience/analyze.png";
+import analyzePng from "../assets/experience/analyze.png";
 import dashboardPng from "../assets/experience/dashboard.png";
 
 /* ── project data ─────────────────────────────────────────────────── */
@@ -28,15 +28,27 @@ const PROJECT = {
 /* ── animation variants ───────────────────────────────────────────── */
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: "easeOut" } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: "easeOut" },
+  },
 };
 const fadeLeft = {
   hidden: { opacity: 0, x: -60 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.65, ease: "easeOut" } },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.65, ease: "easeOut" },
+  },
 };
 const fadeRight = {
   hidden: { opacity: 0, x: 60 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.65, ease: "easeOut" } },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.65, ease: "easeOut" },
+  },
 };
 
 /* ── shared style objects ─────────────────────────────────────────── */
@@ -46,7 +58,8 @@ const glassCard = {
   WebkitBackdropFilter: "blur(18px)",
   border: "1px solid rgba(255,255,255,0.08)",
   borderRadius: "16px",
-  boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.06)",
+  boxShadow:
+    "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.06)",
   padding: "32px",
 };
 
@@ -67,13 +80,12 @@ const productionBadge = {
 
 /* ── screen data with real images ────────────────────────────────── */
 const SCREENS = [
-  { label: "Dashboard",         img: dashboardPng, accent: "#6c63ff" },
-  { label: "Financial Analysis", img: analyzePng,   accent: "#00d4ff" },
+  { label: "Dashboard", img: dashboardPng, accent: "#6c63ff" },
+  { label: "Financial Analysis", img: analyzePng, accent: "#00d4ff" },
 ];
 
 /* ── lightbox ────────────────────────────────────────────────────── */
 const Lightbox = ({ screen, onClose }) => {
-
   /* hide all canvases + lock scroll while open so WebGL can't bleed through */
   useEffect(() => {
     if (!screen) return;
@@ -85,7 +97,9 @@ const Lightbox = ({ screen, onClose }) => {
     });
     document.body.style.overflow = "hidden";
     return () => {
-      canvases.forEach((c, i) => { c.style.visibility = prev[i]; });
+      canvases.forEach((c, i) => {
+        c.style.visibility = prev[i];
+      });
       document.body.style.overflow = "";
     };
   }, [screen]);
@@ -108,7 +122,8 @@ const Lightbox = ({ screen, onClose }) => {
         exit={{ opacity: 0 }}
         onClick={onClose}
         style={{
-          position: "fixed", inset: 0,
+          position: "fixed",
+          inset: 0,
           background: "rgba(0,0,0,0.97)",
           zIndex: 2147483647,
           display: "flex",
@@ -141,9 +156,15 @@ const Lightbox = ({ screen, onClose }) => {
             transition: "transform 0.15s",
             lineHeight: 1,
           }}
-          onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.15)"; }}
-          onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; }}
-        >✕</button>
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "scale(1.15)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+        >
+          ✕
+        </button>
 
         {/* ── image ── */}
         <motion.img
@@ -151,7 +172,7 @@ const Lightbox = ({ screen, onClose }) => {
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.88, opacity: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 28 }}
-          onClick={e => e.stopPropagation()}
+          onClick={(e) => e.stopPropagation()}
           src={screen.img}
           alt={screen.label}
           draggable={false}
@@ -168,7 +189,7 @@ const Lightbox = ({ screen, onClose }) => {
         />
       </motion.div>
     </AnimatePresence>,
-    document.body
+    document.body,
   );
 };
 
@@ -193,42 +214,73 @@ const ScreenThumb = ({ screen, delay, onClick }) => (
       background: "#0a0f2c",
       transition: "border-color 0.2s",
     }}
-    onMouseEnter={e => (e.currentTarget.style.borderColor = screen.accent)}
-    onMouseLeave={e => (e.currentTarget.style.borderColor = `${screen.accent}50`)}
+    onMouseEnter={(e) => (e.currentTarget.style.borderColor = screen.accent)}
+    onMouseLeave={(e) =>
+      (e.currentTarget.style.borderColor = `${screen.accent}50`)
+    }
   >
     {/* image */}
-    <div style={{ width: "100%", aspectRatio: "9/16", overflow: "hidden", position: "relative" }}>
+    <div
+      style={{
+        width: "100%",
+        aspectRatio: "9/16",
+        overflow: "hidden",
+        position: "relative",
+      }}
+    >
       <img
         src={screen.img}
         alt={screen.label}
-        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          display: "block",
+        }}
       />
       {/* zoom icon overlay */}
-      <div style={{
-        position: "absolute", inset: 0,
-        background: "rgba(0,0,0,0)",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        transition: "background 0.2s",
-      }}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(0,0,0,0)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          transition: "background 0.2s",
+        }}
         className="thumb-overlay"
       >
-        <span style={{
-          fontSize: "28px", opacity: 0,
-          transition: "opacity 0.2s",
-          filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.8))",
-        }}
+        <span
+          style={{
+            fontSize: "28px",
+            opacity: 0,
+            transition: "opacity 0.2s",
+            filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.8))",
+          }}
           className="thumb-icon"
-        >🔍</span>
+        >
+          🔍
+        </span>
       </div>
     </div>
     {/* label */}
-    <div style={{
-      padding: "7px 10px",
-      background: `${screen.accent}14`,
-      borderTop: `1px solid ${screen.accent}25`,
-      textAlign: "center",
-    }}>
-      <span style={{ color: screen.accent, fontSize: "11px", fontWeight: "600", letterSpacing: "0.4px" }}>
+    <div
+      style={{
+        padding: "7px 10px",
+        background: `${screen.accent}14`,
+        borderTop: `1px solid ${screen.accent}25`,
+        textAlign: "center",
+      }}
+    >
+      <span
+        style={{
+          color: screen.accent,
+          fontSize: "11px",
+          fontWeight: "600",
+          letterSpacing: "0.4px",
+        }}
+      >
         {screen.label}
       </span>
     </div>
@@ -256,7 +308,6 @@ const Experience = () => {
 
       {/* ── timeline wrapper ──────────────────────────────── */}
       <div className="relative flex flex-col items-center">
-
         {/* vertical glow line — desktop only */}
         <div
           aria-hidden="true"
@@ -271,9 +322,10 @@ const Experience = () => {
         />
 
         {/* ── timeline row ────────────────────────────────── */}
-        <div className="relative w-full flex flex-col md:grid md:gap-0 pb-10"
-          style={{ gridTemplateColumns: "1fr 64px 1fr" }}>
-
+        <div
+          className="relative w-full flex flex-col md:grid md:gap-0 pb-10"
+          style={{ gridTemplateColumns: "1fr 64px 1fr" }}
+        >
           {/* LEFT — project card */}
           <motion.div
             variants={fadeLeft}
@@ -284,7 +336,15 @@ const Experience = () => {
           >
             <div style={glassCard}>
               {/* title + play store row */}
-              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "12px", marginBottom: "4px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "space-between",
+                  gap: "12px",
+                  marginBottom: "4px",
+                }}
+              >
                 <h3
                   className="text-white font-bold leading-tight"
                   style={{ fontSize: "clamp(17px, 2vw, 22px)" }}
@@ -293,10 +353,20 @@ const Experience = () => {
                 </h3>
 
                 {/* action buttons */}
-                <div style={{ display: "flex", gap: "8px", flexShrink: 0, marginTop: "2px", flexWrap: "wrap" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "8px",
+                    flexShrink: 0,
+                    marginTop: "2px",
+                    flexWrap: "wrap",
+                  }}
+                >
                   {/* Play Store button */}
-                  <button
-                    onClick={() => setShowPlayPopup(true)}
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.nf.popularbread&pcampaignid=web_share"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     title="View on Play Store"
                     style={{
                       display: "flex",
@@ -309,13 +379,31 @@ const Experience = () => {
                       cursor: "pointer",
                       boxShadow: "0 4px 16px rgba(1,135,95,0.4)",
                       transition: "transform 0.15s, box-shadow 0.15s",
+                      textDecoration: "none",
                     }}
-                    onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.06)"; e.currentTarget.style.boxShadow = "0 6px 22px rgba(1,135,95,0.6)"; }}
-                    onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "0 4px 16px rgba(1,135,95,0.4)"; }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "scale(1.06)";
+                      e.currentTarget.style.boxShadow =
+                        "0 6px 22px rgba(1,135,95,0.6)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "scale(1)";
+                      e.currentTarget.style.boxShadow =
+                        "0 4px 16px rgba(1,135,95,0.4)";
+                    }}
                   >
                     <FaGooglePlay style={{ color: "#fff", fontSize: "15px" }} />
-                    <span style={{ color: "#fff", fontSize: "12px", fontWeight: "700", letterSpacing: "0.3px" }}>Play Store</span>
-                  </button>
+                    <span
+                      style={{
+                        color: "#fff",
+                        fontSize: "12px",
+                        fontWeight: "700",
+                        letterSpacing: "0.3px",
+                      }}
+                    >
+                      Play Store
+                    </span>
+                  </a>
 
                   {/* Download APK button */}
                   <a
@@ -335,17 +423,37 @@ const Experience = () => {
                       transition: "transform 0.15s, box-shadow 0.15s",
                       textDecoration: "none",
                     }}
-                    onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.06)"; e.currentTarget.style.boxShadow = "0 6px 22px rgba(124,58,237,0.6)"; }}
-                    onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "0 4px 16px rgba(124,58,237,0.4)"; }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "scale(1.06)";
+                      e.currentTarget.style.boxShadow =
+                        "0 6px 22px rgba(124,58,237,0.6)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "scale(1)";
+                      e.currentTarget.style.boxShadow =
+                        "0 4px 16px rgba(124,58,237,0.4)";
+                    }}
                   >
                     <FaDownload style={{ color: "#fff", fontSize: "14px" }} />
-                    <span style={{ color: "#fff", fontSize: "12px", fontWeight: "700", letterSpacing: "0.3px" }}>Download</span>
+                    <span
+                      style={{
+                        color: "#fff",
+                        fontSize: "12px",
+                        fontWeight: "700",
+                        letterSpacing: "0.3px",
+                      }}
+                    >
+                      Download
+                    </span>
                   </a>
                 </div>
               </div>
 
               {/* role */}
-              <p className="font-semibold mb-6" style={{ color: "#a78bfa", fontSize: "15px" }}>
+              <p
+                className="font-semibold mb-6"
+                style={{ color: "#a78bfa", fontSize: "15px" }}
+              >
                 {PROJECT.role}
               </p>
 
@@ -359,7 +467,11 @@ const Experience = () => {
                     viewport={{ once: true }}
                     transition={{ delay: 0.08 * i, duration: 0.4 }}
                     className="flex items-start gap-3"
-                    style={{ color: "#d1d5db", fontSize: "14px", lineHeight: "1.65" }}
+                    style={{
+                      color: "#d1d5db",
+                      fontSize: "14px",
+                      lineHeight: "1.65",
+                    }}
                   >
                     <span
                       style={{
@@ -387,7 +499,8 @@ const Experience = () => {
                 borderRadius: "50%",
                 border: "3px solid #6c63ff",
                 background: "#0a0f2c",
-                boxShadow: "0 0 0 6px rgba(108,99,255,0.15), 0 0 28px rgba(108,99,255,0.5)",
+                boxShadow:
+                  "0 0 0 6px rgba(108,99,255,0.15), 0 0 28px rgba(108,99,255,0.5)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -417,7 +530,11 @@ const Experience = () => {
             {/* duration */}
             <span
               className="font-semibold"
-              style={{ color: "#e2e8f0", fontSize: "19px", letterSpacing: "0.2px" }}
+              style={{
+                color: "#e2e8f0",
+                fontSize: "19px",
+                letterSpacing: "0.2px",
+              }}
             >
               {PROJECT.duration}
             </span>
@@ -439,12 +556,21 @@ const Experience = () => {
             </span>
 
             {/* status note */}
-            <p style={{ color: "#6b7280", fontSize: "13px", lineHeight: "1.5" }}>
+            <p
+              style={{ color: "#6b7280", fontSize: "13px", lineHeight: "1.5" }}
+            >
               {PROJECT.statusNote}
             </p>
 
             {/* 2 real screenshot thumbnails — click to open lightbox */}
-            <div style={{ display: "flex", gap: "14px", marginTop: "8px", flexWrap: "wrap" }}>
+            <div
+              style={{
+                display: "flex",
+                gap: "14px",
+                marginTop: "8px",
+                flexWrap: "wrap",
+              }}
+            >
               {SCREENS.map((screen, i) => (
                 <ScreenThumb
                   key={i}
@@ -462,108 +588,189 @@ const Experience = () => {
       <Lightbox screen={active} onClose={() => setActive(null)} />
 
       {/* ── Play Store popup ── */}
-      {showPlayPopup && ReactDOM.createPortal(
-        <AnimatePresence>
-          <motion.div
-            key="ps-backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setShowPlayPopup(false)}
-            style={{
-              position: "fixed", inset: 0,
-              background: "rgba(0,0,0,0.75)",
-              backdropFilter: "blur(6px)",
-              zIndex: 2147483647,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "24px",
-            }}
-          >
+      {showPlayPopup &&
+        ReactDOM.createPortal(
+          <AnimatePresence>
             <motion.div
-              initial={{ scale: 0.82, opacity: 0, y: 30 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.82, opacity: 0, y: 30 }}
-              transition={{ type: "spring", stiffness: 320, damping: 28 }}
-              onClick={e => e.stopPropagation()}
+              key="ps-backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowPlayPopup(false)}
               style={{
-                background: "linear-gradient(145deg, #0d1117, #0f1e14)",
-                border: "1px solid rgba(1,200,83,0.25)",
-                borderRadius: "20px",
-                padding: "36px 32px",
-                maxWidth: "400px",
-                width: "100%",
-                boxShadow: "0 0 60px rgba(1,135,95,0.25), 0 20px 40px rgba(0,0,0,0.6)",
-                textAlign: "center",
-                position: "relative",
+                position: "fixed",
+                inset: 0,
+                background: "rgba(0,0,0,0.75)",
+                backdropFilter: "blur(6px)",
+                zIndex: 2147483647,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "24px",
               }}
             >
-              {/* close */}
-              <button
-                onClick={() => setShowPlayPopup(false)}
+              <motion.div
+                initial={{ scale: 0.82, opacity: 0, y: 30 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.82, opacity: 0, y: 30 }}
+                transition={{ type: "spring", stiffness: 320, damping: 28 }}
+                onClick={(e) => e.stopPropagation()}
                 style={{
-                  position: "absolute", top: "14px", right: "14px",
-                  background: "rgba(255,255,255,0.07)",
-                  border: "none", borderRadius: "50%",
-                  width: "32px", height: "32px",
-                  color: "#9ca3af", fontSize: "16px", cursor: "pointer",
-                  display: "flex", alignItems: "center", justifyContent: "center",
+                  background: "linear-gradient(145deg, #0d1117, #0f1e14)",
+                  border: "1px solid rgba(1,200,83,0.25)",
+                  borderRadius: "20px",
+                  padding: "36px 32px",
+                  maxWidth: "400px",
+                  width: "100%",
+                  boxShadow:
+                    "0 0 60px rgba(1,135,95,0.25), 0 20px 40px rgba(0,0,0,0.6)",
+                  textAlign: "center",
+                  position: "relative",
                 }}
-              >✕</button>
+              >
+                {/* close */}
+                <button
+                  onClick={() => setShowPlayPopup(false)}
+                  style={{
+                    position: "absolute",
+                    top: "14px",
+                    right: "14px",
+                    background: "rgba(255,255,255,0.07)",
+                    border: "none",
+                    borderRadius: "50%",
+                    width: "32px",
+                    height: "32px",
+                    color: "#9ca3af",
+                    fontSize: "16px",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  ✕
+                </button>
 
-              {/* play store icon big */}
-              <div style={{
-                width: "68px", height: "68px", borderRadius: "18px",
-                background: "linear-gradient(135deg, #01875f, #00c853)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                margin: "0 auto 20px",
-                boxShadow: "0 8px 28px rgba(1,135,95,0.5)",
-              }}>
-                <FaGooglePlay style={{ color: "#fff", fontSize: "30px" }} />
-              </div>
+                {/* play store icon big */}
+                <div
+                  style={{
+                    width: "68px",
+                    height: "68px",
+                    borderRadius: "18px",
+                    background: "linear-gradient(135deg, #01875f, #00c853)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    margin: "0 auto 20px",
+                    boxShadow: "0 8px 28px rgba(1,135,95,0.5)",
+                  }}
+                >
+                  <FaGooglePlay style={{ color: "#fff", fontSize: "30px" }} />
+                </div>
 
-              {/* app name */}
-              <p style={{ color: "#e2e8f0", fontWeight: "800", fontSize: "18px", marginBottom: "6px" }}>
-                Popular Bread
-              </p>
-              <p style={{ color: "#6b7280", fontSize: "13px", marginBottom: "20px" }}>
-                Bread Management System
-              </p>
+                {/* app name */}
+                <p
+                  style={{
+                    color: "#e2e8f0",
+                    fontWeight: "800",
+                    fontSize: "18px",
+                    marginBottom: "6px",
+                  }}
+                >
+                  Popular Bread
+                </p>
+                <p
+                  style={{
+                    color: "#6b7280",
+                    fontSize: "13px",
+                    marginBottom: "20px",
+                  }}
+                >
+                  Bread Management System
+                </p>
 
-              {/* status badge */}
-              <div style={{
-                display: "inline-flex", alignItems: "center", gap: "8px",
-                background: "rgba(251,191,36,0.1)",
-                border: "1px solid rgba(251,191,36,0.35)",
-                borderRadius: "999px",
-                padding: "6px 16px",
-                marginBottom: "20px",
-              }}>
-                <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#fbbf24", display: "inline-block" }} />
-                <span style={{ color: "#fbbf24", fontWeight: "700", fontSize: "13px" }}>Closed Testing</span>
-              </div>
+                {/* status badge */}
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    background: "rgba(251,191,36,0.1)",
+                    border: "1px solid rgba(251,191,36,0.35)",
+                    borderRadius: "999px",
+                    padding: "6px 16px",
+                    marginBottom: "20px",
+                  }}
+                >
+                  <span
+                    style={{
+                      width: "8px",
+                      height: "8px",
+                      borderRadius: "50%",
+                      background: "#fbbf24",
+                      display: "inline-block",
+                    }}
+                  />
+                  <span
+                    style={{
+                      color: "#fbbf24",
+                      fontWeight: "700",
+                      fontSize: "13px",
+                    }}
+                  >
+                    Closed Testing
+                  </span>
+                </div>
 
-              {/* launch date */}
-              <div style={{
-                background: "rgba(1,200,83,0.07)",
-                border: "1px solid rgba(1,200,83,0.2)",
-                borderRadius: "14px",
-                padding: "18px",
-                marginBottom: "8px",
-              }}>
-                <p style={{ color: "#9ca3af", fontSize: "12px", marginBottom: "6px", textTransform: "uppercase", letterSpacing: "1px" }}>Coming to Play Store</p>
-                <p style={{ color: "#00c853", fontWeight: "900", fontSize: "26px", letterSpacing: "0.5px" }}>20 March 2026</p>
-              </div>
+                {/* launch date */}
+                <div
+                  style={{
+                    background: "rgba(1,200,83,0.07)",
+                    border: "1px solid rgba(1,200,83,0.2)",
+                    borderRadius: "14px",
+                    padding: "18px",
+                    marginBottom: "8px",
+                  }}
+                >
+                  <p
+                    style={{
+                      color: "#9ca3af",
+                      fontSize: "12px",
+                      marginBottom: "6px",
+                      textTransform: "uppercase",
+                      letterSpacing: "1px",
+                    }}
+                  >
+                    Coming to Play Store
+                  </p>
+                  <p
+                    style={{
+                      color: "#00c853",
+                      fontWeight: "900",
+                      fontSize: "26px",
+                      letterSpacing: "0.5px",
+                    }}
+                  >
+                    20 March 2026
+                  </p>
+                </div>
 
-              <p style={{ color: "#6b7280", fontSize: "12px", lineHeight: "1.6", marginTop: "14px" }}>
-                The app is currently in closed testing. It will be publicly available on Google Play Store on 20 March 2026.
-              </p>
+                <p
+                  style={{
+                    color: "#6b7280",
+                    fontSize: "12px",
+                    lineHeight: "1.6",
+                    marginTop: "14px",
+                  }}
+                >
+                  The app is currently in closed testing. It will be publicly
+                  available on Google Play Store on 20 March 2026.
+                </p>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        </AnimatePresence>,
-        document.body
-      )}
+          </AnimatePresence>,
+          document.body,
+        )}
 
       {/* keyframes + thumb hover */}
       <style>{`
